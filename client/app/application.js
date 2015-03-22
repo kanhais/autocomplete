@@ -1,1 +1,1 @@
-angular.module('nodeApp', ['ngRoute']);
+angular.module('nodeApp', ['ngRoute', 'myDirectives']);

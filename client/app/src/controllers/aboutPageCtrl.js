@@ -3,7 +3,8 @@ var module = angular.module('nodeApp');
 module.controller('aboutPageCtrl', function($scope, $http) {
     angular.extend($scope, {
         searchText: '',
-        data: ['Name1', 'Name2']
+        data: ['Name1', 'Name2'],
+        selectedItems: []
     });
     
     

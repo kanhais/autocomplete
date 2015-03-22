@@ -45,7 +45,8 @@ module.exports = function (grunt) {
 		  src: ['client/bower_components/jquery/dist/jquery.min.js',
 				'client/bower_components/angular/angular.min.js',
 				'client/bower_components/angular-route/angular-route.min.js',
-                'client/bower_components/lodash/lodash.min.js'],
+                'client/bower_components/lodash/lodash.min.js',
+               'client/bower_components/contentEditable.js'],
 		  dest: 'client/dist/components.js',
 		},
 		js: {

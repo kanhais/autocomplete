@@ -20,10 +20,15 @@ angular.module('nodeApp')
             scope: {
                 ngModel: '=',
                 data: '=',
-                fetch: '&'
+                fetch: '&',
+                selectedItems: '='
             },
             link: function(scope, element, attrs, ctrl) {
-                var elem = '<ul class="autocomplete-dropdown" ng-show="isListPopulated"><li class="autocomplete-item" ng-repeat="option in subNameArray">{{option}}</li></ul>';
+                scope.test = 'test';
+                scope.applyClass = "selected-item";
+                var elem = '<ul class="autocomplete-dropdown"  ng-show="isListPopulated">' + 
+                            '<li class="autocomplete-item" ng-repeat="option in subNameArray" ng-click="selectItem(option, $event)">{{option}}</li>'+
+                            '</ul>';
                 var filteredList = [];
                 scope.isListPopulated = false;
                 if (angular.isDefined(scope.data)) {
@@ -36,7 +41,7 @@ angular.module('nodeApp')
                 }
 
 
-                angular.element('body').append($compile(elem)(scope));
+                angular.element('.search-box-parent').append($compile(elem)(scope));
                 element.bind('click', function() {
                     scope.isListPopulated = true;
                     scope.$apply();
@@ -48,7 +53,7 @@ angular.module('nodeApp')
                         if (_.startsWith(item, criteria)) {
                             filteredList.push(item);
                             if (filteredList.length === 1 && scope.ngModel.length) {
-                                angular.element('.sub-text-box').val(item);
+                                angular.element('.sub-text-box').text(item);
                             }
                             return true;
                         }
@@ -58,22 +63,29 @@ angular.module('nodeApp')
                 scope.$watch('ngModel', function() {
                     filteredList = [];
                     if (!scope.ngModel.length) {
-                        angular.element('.sub-text-box').val('');
+                        angular.element('.sub-text-box').text('');
                         scope.subNameArray = scope.options;
                     } else {
                         scope.subNameArray = _.groupBy(scope.options, function(name) {
                             return _.startsWith(name, scope.ngModel);
                         }).true;
                         if (angular.isUndefined(scope.subNameArray)) {
-                            angular.element('.sub-text-box').val('');
+                            angular.element('.sub-text-box').text('');
                         } else {
-                            angular.element('.sub-text-box').val(scope.subNameArray[0]);
+                            angular.element('.sub-text-box').text(scope.subNameArray[0]);
                         }
                     }
                     firstElement = '';
                     lastSelectedElement = '';
                 });
-
+                
+                scope.selectItem = function(option, event){
+                  angular.element(event.target).addClass('selected-name');
+                   angular.element('.main-text-box').text('');
+                  angular.element('.sub-text-box').text('');
+                  scope.selectedItems.push(option);  
+                };
+                
                 $document.bind('click', function(event) {
                     if (!angular.element('.search-box').find(event.target).size() && !angular.element('.autocomplete-dropdown').find(event.target).size()) {
                         scope.isListPopulated = false;
@@ -83,7 +95,7 @@ angular.module('nodeApp')
 
                 element.bind('keydown', function(event) {
                     if (event.keyCode === RIGHT_ARROW_KEY_CODE && scope.ngModel.length) {
-                        element.val(scope.subNameArray[0]);
+                        element.text(scope.subNameArray[0]);
                         element.focus();
                         scope.$apply();
                     } else if (event.keyCode === DOWN_ARROW_KEY_CODE) {
