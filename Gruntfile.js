@@ -46,7 +46,8 @@ module.exports = function (grunt) {
 				'client/bower_components/angular/angular.min.js',
 				'client/bower_components/angular-route/angular-route.min.js',
                 'client/bower_components/lodash/lodash.min.js',
-               'client/bower_components/contentEditable.js'],
+               'client/bower_components/contentEditable.js',
+               'client/bower_components/ng-sortable.js'],
 		  dest: 'client/dist/components.js',
 		},
 		js: {

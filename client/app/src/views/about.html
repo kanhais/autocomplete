@@ -1,9 +1,7 @@
 <div class="search-box-parent">
     <div class="search-box">
-        <div class="selected-fields" ng-repeat="option in selectedItems">
-            {{option}}<span class="remove-name">&times;</span>
-        </div>
-        <div contenteditable class="main-text-box autocomplete-textbox" autocomplete ng-model="searchText" fetch="fetch()" selected-items="selectedItems">
+      
+        <div contenteditable class="main-text-box autocomplete-textbox" autocomplete ng-model="searchText" data="data" selected-items="selectedItems">
 
         </div>
         <div class="sub-text-box autocomplete-textbox">

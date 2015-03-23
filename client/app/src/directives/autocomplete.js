@@ -22,13 +22,19 @@ angular.module('nodeApp')
                 data: '=',
                 fetch: '&',
                 selectedItems: '='
+	        		
             },
             link: function(scope, element, attrs, ctrl) {
                 scope.test = 'test';
                 scope.applyClass = "selected-item";
-                var elem = '<ul class="autocomplete-dropdown"  ng-show="isListPopulated">' + 
-                            '<li class="autocomplete-item" ng-repeat="option in subNameArray" ng-click="selectItem(option, $event)">{{option}}</li>'+
-                            '</ul>';
+                var elem = '<ul class="autocomplete-dropdown"  ng-show="isListPopulated">' +
+                    '<li class="autocomplete-item" ng-repeat="option in subNameArray" ng-class="{\'selected-name\': option.selected}" ng-click="selectItem(option, $event)">{{option.name}}</li>' +
+                    '</ul>';
+                var elem1 = '<div class="search-box-container">'+	
+                '<ul class="selected-fields" as-sortable="sortableOptions" ng-model="selectedItems">'+
+                '<li class="selected-field-item" ng-repeat="option in selectedItems" as-sortable-item  option><div as-sortable-item-handle>{{option.name}}<span class="remove-name" ng-click="removeItem(option, $event)">&times;</span></div></li>'+
+        	'</ul>'+
+		'</div>';
                 var filteredList = [];
                 scope.isListPopulated = false;
                 if (angular.isDefined(scope.data)) {
@@ -36,29 +42,18 @@ angular.module('nodeApp')
                 } else {
                     scope.fetch().then(function(data) {
                         scope.options = data.data;
-                        scope.subNameArray = scope.options;
+                        scope.subNameArray = _.pluck(scope.options, 'name');
                     });
                 }
 
 
                 angular.element('.search-box-parent').append($compile(elem)(scope));
+                angular.element('.search-box').prepend($compile(elem1)(scope));
                 element.bind('click', function() {
                     scope.isListPopulated = true;
                     scope.$apply();
                 });
-                scope.criteriaMatch = function(criteria) {
-                    if (!criteria) return '';
-                    return function(item) {
-                        var nameArray = _.groupBy()
-                        if (_.startsWith(item, criteria)) {
-                            filteredList.push(item);
-                            if (filteredList.length === 1 && scope.ngModel.length) {
-                                angular.element('.sub-text-box').text(item);
-                            }
-                            return true;
-                        }
-                    };
-                };
+
 
                 scope.$watch('ngModel', function() {
                     filteredList = [];
@@ -67,25 +62,46 @@ angular.module('nodeApp')
                         scope.subNameArray = scope.options;
                     } else {
                         scope.subNameArray = _.groupBy(scope.options, function(name) {
-                            return _.startsWith(name, scope.ngModel);
+                            return _.startsWith(name.name, scope.ngModel);
                         }).true;
                         if (angular.isUndefined(scope.subNameArray)) {
                             angular.element('.sub-text-box').text('');
-                        } else {
-                            angular.element('.sub-text-box').text(scope.subNameArray[0]);
-                        }
+                        } else if(angular.isDefined(scope.findFirstAvailableName())){
+				angular.element('.sub-text-box').text(scope.subNameArray[scope.findFirstAvailableName()].name);
+			} else{
+				angular.element('.sub-text-box').text('');
+			    }			
                     }
                     firstElement = '';
                     lastSelectedElement = '';
                 });
-                
-                scope.selectItem = function(option, event){
-                  angular.element(event.target).addClass('selected-name');
-                   angular.element('.main-text-box').text('');
-                  angular.element('.sub-text-box').text('');
-                  scope.selectedItems.push(option);  
+
+		scope.findFirstAvailableName = function() {
+		    return _.findIndex(scope.subNameArray, function(name){
+			  return angular.isUndefined(name.selected);
+		     });
+		};
+
+                scope.selectItem = function(option, event) {
+                    scope.selectedItem = option;
+                    angular.element('.main-text-box').text('');
+                    angular.element('.sub-text-box').text('');
+                    option.selected = true;
+                    scope.selectedItems.push(option);
                 };
-                
+
+		scope.removeItem = function(option, event) {
+		    var index = scope.subNameArray.indexOf(option);
+		    delete scope.subNameArray[index].selected;
+		    scope.selectedItems.splice(scope.selectedItems.indexOf(option), 1);	
+		};
+
+		scope.sortableOptions = {
+              		accept: function () {
+                	   return true;
+                	}
+                };
+
                 $document.bind('click', function(event) {
                     if (!angular.element('.search-box').find(event.target).size() && !angular.element('.autocomplete-dropdown').find(event.target).size()) {
                         scope.isListPopulated = false;
@@ -95,7 +111,7 @@ angular.module('nodeApp')
 
                 element.bind('keydown', function(event) {
                     if (event.keyCode === RIGHT_ARROW_KEY_CODE && scope.ngModel.length) {
-                        element.text(scope.subNameArray[0]);
+                        element.text(scope.subNameArray[0].name);
                         element.focus();
                         scope.$apply();
                     } else if (event.keyCode === DOWN_ARROW_KEY_CODE) {
