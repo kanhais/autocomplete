@@ -43,11 +43,13 @@ module.exports = function (grunt) {
 	concat: {
 		thirdParty: {
 		  src: ['client/bower_components/jquery/dist/jquery.min.js',
-				'client/bower_components/angular/angular.min.js',
-				'client/bower_components/angular-route/angular-route.min.js',
-                'client/bower_components/lodash/lodash.min.js',
-               'client/bower_components/contentEditable.js',
-               'client/bower_components/ng-sortable.js'],
+			'client/bower_components/angular/angular.min.js',
+			'client/bower_components/angular-route/angular-route.min.js',
+		        'client/bower_components/lodash/lodash.min.js',
+		        'client/bower_components/contentEditable.js',
+		        'client/bower_components/ng-sortable.js',
+		        'client/bower_components/ng-tags-input/ng-tags-input.js',
+		        'client/bower_components/bootstrap/dist/js/bootstrap.min.js'],
 		  dest: 'client/dist/components.js',
 		},
 		js: {

@@ -18,7 +18,8 @@
     "lodash": "^3.5.0",
     "method-override": "~1.0.0",
     "morgan": "~1.0.0",
-    "serve-favicon": "^2.2.0"
+    "serve-favicon": "^2.2.0",
+    "ng-tags-input": "~2.3.0"
   },
   "devDependencies": {
     "connect-livereload": "~0.4.0",

@@ -10,3 +10,36 @@
     </div>
 </div>
 
+<tags-input ng-model="tags">
+  
+</tags-input>
+
+<div class="col-md-12 filter-parent">
+	<div class="col-md-2" filter-for-table data="categories" selected-filters="selectedFilters">
+	</div>
+	<div class="col-md-10 selected-filters">
+		<div class="applied-filter" ng-repeat="filter in selectedFilters">
+			<div>
+			<span class="filter-display-name-text"> {{filter.displayName}} : </span>
+			<input type="text" class="form-control filter-text-box" ng-model="test"/>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="col-md-12 table-responsive">
+	<table class="table table-bordered">
+		<thead>
+		     	<tr class="header-row">
+				<th ng-repeat = "category in categories">{{category.displayName}}</th>
+		     	</tr>
+		</thead>	
+		<tbody>
+			<tr class="body-row" ng-repeat="info in userInfo">
+				<td>{{info.name}}</td>
+				<td>{{info.id}}</td>
+				<td>{{info.address}}</td>
+				<td>{{info.age}}</td>
+			</tr>
+			
+	</table>
+</div>

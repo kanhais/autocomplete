@@ -1,1 +1,1 @@
-angular.module('nodeApp', ['ngRoute', 'myDirectives']);
+angular.module('nodeApp', ['ngRoute', 'myDirectives', 'ngTagsInput']);
