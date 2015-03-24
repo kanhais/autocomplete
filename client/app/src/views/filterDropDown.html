@@ -1,0 +1,9 @@
+<div>
+	<div class="filter-icon glyphicon glyphicon-filter" ng-click="toggleDropDown()"></div>
+	<div class="filter-static-label" ng-if="selectedFilters.length"> Applied Filter : </div>
+	<div class="filter-drop-down-parent" ng-if="filterOptions.length" ng-show="isListVisible">
+		<ul class="filter-drop-down">
+			<li class="filter-drop-down-item" ng-repeat="filter in filterOptions" ng-click="addFilter(filter)">{{filter.displayName}}</li>
+		</ul>
+	</div>
+</div>
