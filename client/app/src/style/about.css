@@ -214,7 +214,7 @@ body {
 }
 
 .modal-parent {
-	background: -webkit-linear-gradient(top, rgb(0, 180, 255) 0%, rgb(0, 144, 255) 100%);
+	background: linear-gradient(to bottom,#00b4ff 0,#0090ff 100%);
 	width: 96%;
 	height: 96%;
 	left: 100%;
@@ -243,14 +243,16 @@ body {
 
 .custom-modal-header {
 	float: right;
-	height: 20%;
+	min-height: 20%;
 	width: 100%;
 }
 
 .custom-modal-body {
 	height: 60%;
+	max-height: 60%;	
 	float: left;
 	width: 100%;	
+	overflow: auto;
 }
 
 .custom-modal-footer {
