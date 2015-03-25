@@ -20,8 +20,8 @@
 	<div class="col-md-10 selected-filters">
 		<div class="applied-filter" ng-repeat="filter in selectedFilters">
 			<div>
-			<span class="filter-display-name-text"> {{filter.displayName}} : </span>
-			<input type="text" class="form-control filter-text-box" ng-model="test"/>
+			<span class="filter-display-name-text"> {{filter.displayName}}</span>
+			<input type="text" class="form-control filter-text-box " ng-model="test"/>
 			</div>
 		</div>
 	</div>
@@ -42,4 +42,18 @@
 			</tr>
 			
 	</table>
+</div>
+<div class="modal-popup-transclude-parent" modal-popup>
+	<div class="tag-directive">
+		<label class="tag-text"> Name </label>
+		<input type="text" class="text-box-without-outline" ng-model="name"/>
+	</div>
+	<div class="tag-directive">
+		<label class="tag-text"> Manager </label>
+		<input type="text" class="text-box-without-outline" ng-model="managerName"/>
+	</div>
+	<div class="tag-directive">
+		<label class="tag-text"> Create Tag </label>
+		<tags-input ng-model="tags"></tags-input>
+	</div>
 </div>
