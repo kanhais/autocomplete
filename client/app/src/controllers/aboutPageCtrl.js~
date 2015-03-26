@@ -28,18 +28,7 @@ module.controller('aboutPageCtrl', function($scope, $http) {
     };
     $scope.selectedFilters = [];
     $scope.isFlipped = false;
-    $scope.departments = [{name: 'Department 1',
-						   role: 'Manager',
-						   lastUpdated: '26th of Jan 2014',	
-						   created: '26th of Jan 2013'},			
-						  {name: 'Department 2',
-						   role: 'Manager',
-						   lastUpdated: '26th of Feb 2014',	
-						   created: '26th of Feb 2013'},			
-						  {name: 'Department 3',
-						   role: 'Admin',
-						   lastUpdated: '26th of Mar 2014',	
-						   created: '26th of Mar 2013'}];			
-										
-
+    $("#card").flip({
+		axis: 'x'	
+	});		
 });

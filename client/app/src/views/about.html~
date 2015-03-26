@@ -57,7 +57,7 @@
 		<tags-input ng-model="tags"></tags-input>
 	</div>
 </div>
-<div ng-repeat="department in departments" ng-if="$index < 1">
+<div ng-repeat="department in departments">
  <flippy
             class="fancy"
 			flip= "flip1"			

@@ -392,12 +392,10 @@ flippy-back {
 	width: 40%;
 	font-family: monospace;
 	font-weight: bold;
-	border-color: #fff !important;
 }
 .action-button:hover {
 	background: #fff !important;
 	color: #286090 !important;
-	border-color: #204d74 !important;
 } 
 
 
