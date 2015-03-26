@@ -27,4 +27,8 @@ module.controller('aboutPageCtrl', function($scope, $http) {
         return $http.get('/data/names');
     };
     $scope.selectedFilters = [];
+    $scope.isFlipped = false;
+    $("#card").flip({
+		axis: 'x'	
+	});		
 });

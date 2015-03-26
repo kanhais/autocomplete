@@ -57,3 +57,34 @@
 		<tags-input ng-model="tags"></tags-input>
 	</div>
 </div>
+ <flippy
+            class="fancy"
+            ng-click="flip()"
+            flip-duration="800"
+            timing-function="linear">
+
+            <flippy-front>
+				<button class="btun btn-primary btn-sm follow-button"> Follow </button>
+				<div class="card-details">               
+					<div class="department-name"> Kanhai The Code At Work </div>
+					<div class="user-type"> Manager </div>
+					<div class="last-updated"> Last Updated - 26th Jan, 2014</div>
+					<div class="created"> Created - 26th Jan, 2011</div>
+					<div class="button-group">
+						<button class="btn btn-primary btn-lg details action-button">Details</button>
+						<button class="btn btn-primary btn-lg manage action-button">Manage</button>
+					</div>  
+				</div>          
+			</flippy-front>
+
+            <flippy-back>
+                <div class="div-1"></div>
+				<div class="div-2"></div>
+				<div class="div-3"></div>
+				<div class="div-4"></div>
+            </flippy-back>
+
+ </flippy>
+
+
+

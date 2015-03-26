@@ -49,7 +49,9 @@ module.exports = function (grunt) {
 		        'client/bower_components/contentEditable.js',
 		        'client/bower_components/ng-sortable.js',
 		        'client/bower_components/ng-tags-input/ng-tags-input.js',
-		        'client/bower_components/bootstrap/dist/js/bootstrap.min.js'],
+		        'client/bower_components/bootstrap/dist/js/bootstrap.min.js',
+			'client/bower_components/flip/dist/jquery.flip.min.js',
+			'client/bower_components/angular-flippy-master/js/src/flippy-directive.js'],
 		  dest: 'client/dist/components.js',
 		},
 		js: {

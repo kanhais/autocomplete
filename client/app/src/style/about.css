@@ -326,8 +326,84 @@ body {
 	border-radius: 0 7px 7px 7px;
 }
 
+.div-1, .div-2, .div-3, .div-4 {
+	width: 40%;
+	height: 40%;
+	position: absolute;
+	top: 30%;
+	left: 30%;
+	opacity: 0;
+}
+
+.fancy {
+	width: 500px !important;
+	height: 400px !important;
+}
+
+flippy-front {
+	background: linear-gradient(to bottom,#00b4ff 0,#0090ff 100%);
+}
+
+flippy-back {
+	
+}
+
+.follow-button {
+	float: right;
+	font-weight: bold;
+	font-family: monospace;
+	border: none;
+}
+.department-name {
+	font-size: 3vmin;
+	color: #fff;
+	margin: 10% 2% 0 10%;
+	font-family: monospace;
+}
+.user-type {
+	font-size: 2vmin;
+	/* display: block; */
+	font-family: monospace;
+	color: #fff;
+	/* margin-left: 11%; */
+	margin: 2% 02%0 10%;
+}
+.last-updated {
+	font-size: 2vmin;
+	/* display: block; */
+	font-family: monospace;
+	color: #fff;
+	/* margin-left: 11%; */
+	margin: 2% 02%0 10%;
+}
+.created {
+	font-size: 2vmin;
+	/* display: block; */
+	font-family: monospace;
+	color: #fff;
+	/* margin-left: 11%; */
+	margin: 2% 02%0 10%;
+}
+.button-group {
+	margin: 10% 2% 2% 10%;
+}
+
+.action-button {
+	width: 40%;
+	font-family: monospace;
+	font-weight: bold;
+}
+.action-button:hover {
+	background: #fff !important;
+	color: #286090 !important;
+} 
 
 
+.follow-button:hover {
+	background: #fff !important;
+	color: #286090 !important;
+    content: "following";
+}
 
 
 
