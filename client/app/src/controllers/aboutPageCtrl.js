@@ -39,7 +39,14 @@ module.controller('aboutPageCtrl', function($scope, $http) {
 						  {name: 'Department 3',
 						   role: 'Admin',
 						   lastUpdated: '26th of Mar 2014',	
-						   created: '26th of Mar 2013'}];			
+						   created: '26th of Mar 2013'}];
+  $scope.animate = function (){
+	angular.element('.abstract-detail').animate({width: '40%'}, 1000);
+	angular.element('.list-view-div-1').animate({width: '40%', height: '40%'}, 1000);
+	angular.element('.list-view-div-2').animate({width: '40%', height: '40%'}, 1000);
+	angular.element('.list-view-div-3').animate({width: '40%', height: '40%'}, 1000);
+	angular.element('.list-view-div-4').animate({width: '40%', height: '40%'}, 1000);
+  };				
 										
 
 });

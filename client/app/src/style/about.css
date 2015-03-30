@@ -408,5 +408,77 @@ flippy-back {
 	border: 1px solid;
 }
 
+.full-detail {
+	display: inline-block;
+	width: 65%;
+	height: 100%;
+	border: 1px solid grey;
+
+}
+
+.abstract-detail {
+	width: 2%;
+	height: 100%;
+	background: aqua;
+	display: inline-block;
+	position: relative;
+}
+
+.list-view {
+	float: left;
+	margin: 5%;
+	width: 100%;
+	height: 250px;
+}
+
+.list-view-div-1 {
+	position: absolute;
+	top: 5%;
+	left: 7%;
+	width: 0%;
+	height: 0%;
+	background: #fff;
+}
+.list-view-div-2 {
+	position: absolute;
+	top: 5%;
+	left: 52%;
+	width: 0%;
+	height: 0%;
+	background: #fff;
+}
+.list-view-div-3 {
+	position: absolute;
+	top: 50%;
+	left: 52%;
+	width: 0%;
+	height: 0%;
+	background: #fff;
+}
+.list-view-div-4 {
+	position: absolute;
+	top: 50%;
+	left: 7%;
+	width: 0%;
+	height: 0%;
+	background: #fff;
+}
+
+.vertical-button {
+	height: 100%;
+	margin-left: -50%;
+}
+
+.span-button {
+	-webkit-transform: rotate(-90deg);
+	top: 47%;
+	font-size: 12px !important;
+	background-color: #286090 !important;
+	color: #fff !important;
+	border: 1px solid #fff !important;
+	padding: 2px !important;
+	font-family: monospace;
+	font-weight: bold !important;
+}
 
 
